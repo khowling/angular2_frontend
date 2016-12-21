@@ -1,3 +1,30 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+    <h1>Profile</h1>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="newProfile.firstName"required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Alter Ego</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="newProfile.lastName">
+    </div>
+
+    <button type="submit" class="btn btn-default" (click)="addProfile();">Submit</button>
+    <hr/>
+    <section class="main" *ngIf="profiles.length > 0">
+      <table class="table">
+        <tr>
+          <th>url</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+        <tr *ngFor="let profile of profiles">
+          <td>{{profile._links.self.href}}</td>
+          <td>{{profile.firstName}}</td>
+          <td>{{profile.lastName}}</td>
+        </tr>
+      </table>
+    </section>
+</div>
+
